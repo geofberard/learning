@@ -1,0 +1,45 @@
+name: Front - ReactJS
+on:
+  push:
+    paths:
+      - 'front/**'
+permissions:
+  contents: write
+jobs:
+  build:
+    name: Build 🔧
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Using node 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.18.2'
+      - name: Install and Build
+        working-directory: front/
+        run: |
+          npm install
+          npm run build
+      - name: Uploading artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          name: github-pages
+          path: front/build
+  deploy:
+    name: Deploy 🚀
+    if: github.ref_name == 'main'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+

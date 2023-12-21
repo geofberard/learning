@@ -1,0 +1,4 @@
+runtime: java21
+instance_class: F1
+service_account: api-runtime@learning-system-prod.iam.gserviceaccount.com
+
