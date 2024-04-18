@@ -1,29 +1,22 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import {fetchText} from "./service/PromiseService";
+import CountdownTimer from "./CountdownTimer";
+import Stickynote from "./Stickynote";
 
 function App() {
-  const [apiResult , setAPIResult] = useState("")
-
-  const callApi = () => {
-    try{
-      fetchText("/api/")
-          .then(setAPIResult);
-    } catch (err) {
-        console.log(err);
-    }
-  }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <button onClick={callApi}>Api Call</button>
-        <div className="App-result">{apiResult}</div>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Stickynote>
+                    <div className="App-title">Tooooooo Soooooooon</div>
+                    <img src="stars.jpg" className="App-logo" alt="logo"/>
+                    <div className="App-subtitle">Je sais que les stars ne savent pas attendre ...</div>
+                    <div className="App-subtitle">Mais il va falloir patienter</div>
+                    <CountdownTimer targetDate={new Date(2024, 4, 19, 12, 0, 0)}/>
+                </Stickynote>
+            </header>
+        </div>
+    );
 }
 
 export default App;
