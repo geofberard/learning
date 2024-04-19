@@ -1,19 +1,17 @@
 import React from 'react';
 import './App.css';
-import CountdownTimer from "./CountdownTimer";
+import ImageLoader from "./ImageLoader";
 import Stickynote from "./Stickynote";
 
 function App() {
+    const queryString = window.location.search;
+    const displayHelp = queryString === "?tinkerbell"
+
     return (
         <div className="App">
             <header className="App-header">
-                <Stickynote>
-                    <div className="App-title">Tooooooo Soooooooon</div>
-                    <img src="stars.jpg" className="App-logo" alt="logo"/>
-                    <div className="App-subtitle">Je sais que les stars ne savent pas attendre ...</div>
-                    <div className="App-subtitle">Mais il va falloir patienter</div>
-                    <CountdownTimer targetDate={new Date(2024, 4, 19, 12, 0, 0)}/>
-                </Stickynote>
+                <ImageLoader src={"./investigation.jpg"}/>
+                {displayHelp && <Stickynote text={"Pas de double-tap sur le phare gauche !!!"} author="gbe"/>}
             </header>
         </div>
     );
