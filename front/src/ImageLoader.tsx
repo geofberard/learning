@@ -7,7 +7,6 @@ interface ImageLoaderProps {
 const ImageLoader: React.FC<ImageLoaderProps> = ({src}) => {
     const [loaded, setLoaded] = useState(false);
     const [timingOk, setTimingOk] = useState(false);
-    const [clicked, setClicked] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -17,24 +16,40 @@ const ImageLoader: React.FC<ImageLoaderProps> = ({src}) => {
         return () => clearTimeout(timer);
     }, []);
 
-    const redirect = () => {
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    const redirect = (url: string) => {
+        window.location.href = url;
+    }
+
+    let onDoubleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        const divElement = event.target;
+        const absoluteX = (document.documentElement.scrollLeft || document.body.scrollLeft) + event.clientX ;
+        const absoluteY = (document.documentElement.scrollTop || document.body.scrollTop) + event.clientY ;
+        if (divElement instanceof HTMLElement) {
+            let relativeX = absoluteX / divElement.offsetWidth;
+            let relativeY = absoluteY / divElement.offsetWidth;
+            if(relativeX>0.93 &&relativeX<0.95 && relativeY>0.67 &&relativeY<0.69) {
+                redirect("stereogram2.jpg");
+            }
+        }
     }
 
     return (
-        <div className="App-container">
+        <div className="App-container" onDoubleClick={onDoubleClick}>
             {!(loaded && timingOk) && (
                 <div className="App-fallback">
                     <div className="loader-container">
-                        <div className="loader-text">Patience, elle arrive ...</div>
+                        <div className="loader-text">Patience, elles arrivent ...</div>
                         <div className="loader"></div>
                         <img className="loader-img" src="./tink.png" alt="tink"/>
                     </div>
                 </div>
             )}
-            <img src={clicked ? "./stereogram.jpg" : src} className="App-logo" alt="logo" onLoad={() => setLoaded(true)}/>
-            <div className="App-target" onDoubleClick={() => setClicked(true)}></div>
-            <div className="App-cible" onDoubleClick={redirect}></div>
+            <img src={src}
+                 className="App-logo"
+                 alt="logo"
+                 onLoad={() => setLoaded(true)}/>
+            <div className="App-target" onDoubleClick={() => redirect("stereogram.jpg")}></div>
+            <div className="App-cible" onDoubleClick={() => redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")}></div>
         </div>
     )
 };
