@@ -12,7 +12,7 @@ interface TimeLeft {
 
 const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
   const calculateTimeLeft: () => TimeLeft = () => {
-    const difference = +new Date(targetDate) - +new Date();
+    const difference = + new Date(targetDate) - + new Date();
     let timeLeft = {
       hours: 0,
       minutes: 0,
@@ -21,7 +21,7 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
 
     if (difference > 0) {
       timeLeft = {
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        hours: Math.floor((difference / (1000 * 60 * 60))),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
       };
@@ -33,11 +33,9 @@ const CountdownTimer: React.FC<CountdownProps> = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
 
-    return () => clearTimeout(timer);
+    return () => clearInterval(timer);
   });
 
   return (
