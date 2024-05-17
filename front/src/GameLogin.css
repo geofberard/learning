@@ -40,3 +40,7 @@
   transform: translate(-50%, -50%);
   background-color: #20232a;
 }
+
+.game-1-help-container button {
+  margin-left: 70px;
+}

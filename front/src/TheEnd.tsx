@@ -6,7 +6,6 @@ const TheEnd: React.FC = () => {
         <div className="the-end-container">
             <div>Bien joué !!!!! </div>
             <div>Ton Cadeau est en chemin 😊</div>
-
         </div>
     )
 }

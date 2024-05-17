@@ -20,7 +20,7 @@ const SelfTimer: React.FC<PropsWithChildren<SelfTimerProps>> = ({children, trigg
         return () => {
             clearInterval(interval);
         };
-    }, []);
+    }, [triggerDate, isTriggered]);
 
     console.log("Refreshing", isTriggered)
 

@@ -12,6 +12,7 @@ const GamePuzzle: React.FC<GameLoginProps> = ({onDone}) => {
 
     return (
         <div className="game-2-container">
+            <div>Coming soon ... but when ? 🤔</div>
             <DigitalClock onDone={onDone}/>
             <Frame/>
         </div>

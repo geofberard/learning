@@ -30,7 +30,7 @@ const GameLogin: React.FC<GameLoginProps> = ({onDone}) => {
             {displayHelp && (
                 <div className="game-1-help-container">
                     <GameLoginHelp/>
-                    <button onClick={() => setDisplayHelp(false)}>Stop</button>
+                    <button onClick={() => setDisplayHelp(false)}>I'm done !!!</button>
                 </div>
             )}
         </div>
