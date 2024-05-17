@@ -3,6 +3,7 @@ import './App.css';
 import SelfTimer from "./SelfTimer";
 import GameLogin from "./GameLogin";
 import GamePuzzle from "./GamePuzzle";
+import GameLoginHelp from "./GameLoginHelp";
 
 enum Stages {
     LOGIN, PUZZLE, DONE

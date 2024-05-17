@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import './GameLogin.css';
+import GameLoginHelp from "./GameLoginHelp";
 
 interface GameLoginProps {
     onDone: () => void;
@@ -6,12 +8,14 @@ interface GameLoginProps {
 
 const GameLogin: React.FC<GameLoginProps> = ({onDone}) => {
     const [value, setValue] = useState("");
+    const [displayHelp, setDisplayHelp] = useState(false)
 
     const onClick = () => {
         if (value === "Danger") {
             onDone();
         }
     }
+
 
     return (
         <div className="game-1-container">
@@ -22,6 +26,13 @@ const GameLogin: React.FC<GameLoginProps> = ({onDone}) => {
                    value={value}
                    onChange={event => setValue(event.target.value)}/>
             <button onClick={onClick}>Ca ne peut être que ca !</button>
+            <div className="game-1-help" onClick={() => setDisplayHelp(true)}>Help !!!!</div>
+            {displayHelp && (
+                <div className="game-1-help-container">
+                    <GameLoginHelp/>
+                    <button onClick={() => setDisplayHelp(false)}>Stop</button>
+                </div>
+            )}
         </div>
     );
 }

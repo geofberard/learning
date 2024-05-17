@@ -1,0 +1,10 @@
+.cell {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.cell.checked {
+    background: white;
+}

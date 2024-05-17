@@ -48,30 +48,3 @@
   font-size: 0.8rem;
   color: #999;
 }
-
-.game-1-container {
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 50px 10px;
-}
-
-.game-1-text {
-  font-size: 1.6rem;
-}
-
-.game-1-nedry {
-  width: 150px;
-}
-
-.game-1-code {
-  color: white;
-  padding: 5px 20px;
-  background-color: #3c3f41;
-  border-radius: 8px;
-  border: 0;
-  text-align: center;
-  font-weight: bold;
-}
