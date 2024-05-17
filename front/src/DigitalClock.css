@@ -1,0 +1,20 @@
+.digital-clock {
+    padding: 20px;
+    border-radius: 50px;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #3c3f41;
+}
+
+.digital-clock .value {
+    font-size: 3rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.digital-clock .separator {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #999;
+    display: inline-block;
+}
+

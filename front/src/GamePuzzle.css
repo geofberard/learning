@@ -7,20 +7,10 @@
   padding: 50px 10px;
 }
 
-.game-2-text {
-  font-size: 1.6rem;
-}
-
-.game-2-nedry {
+.game-2-tinkerbell {
   width: 150px;
-}
-
-.game-2-code {
-  color: white;
-  padding: 5px 20px;
-  background-color: #3c3f41;
-  border-radius: 8px;
-  border: 0;
-  text-align: center;
-  font-weight: bold;
+  position: fixed;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }

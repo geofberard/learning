@@ -9,13 +9,22 @@ const SelfTimer: React.FC<PropsWithChildren<SelfTimerProps>> = ({children, trigg
     const [isTriggered, setIsTriggered] = useState(triggerDate < new Date());
 
     useEffect(() => {
-        const interval = setInterval(() => setIsTriggered(triggerDate < new Date()), 1000);
+        const interval = setInterval(() => {
+            const difference = + new Date(triggerDate) - + new Date();
+            console.log("Evaluating", difference)
+            if(!isTriggered && difference <= 0) {
+                setIsTriggered(true);
+                clearInterval(interval);
+            }
+        }, 1000);
         return () => {
             clearInterval(interval);
         };
     }, []);
 
-    return !isTriggered ? <>{children}</> : (
+    console.log("Refreshing", isTriggered)
+
+    return isTriggered ? <>{children}</> : (
         <div className="loader-container">
             <div className="loader-text">Patience, elle arrive ...</div>
             <CountdownTimer targetDate={triggerDate}/>

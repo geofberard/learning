@@ -1,22 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
+import "./GamePuzzle.css"
+import Frame from "./Frame";
+import DigitalClock from "./DigitalClock";
+
 
 interface GameLoginProps {
     onDone: () => void;
 }
 
 const GamePuzzle: React.FC<GameLoginProps> = ({onDone}) => {
-    const [value, setValue] = useState("");
-
-    const onClick = () => {
-        if (value === "Danger") {
-            onDone();
-        }
-    }
 
     return (
         <div className="game-2-container">
-            <div className="game-2-text">Ah Ah Ah, you didn't say the magic word !</div>
-            <img className="game-2-nedry" src="./nedry.png" alt="tink"/>
+            <DigitalClock onDone={onDone}/>
+            <Frame/>
         </div>
     );
 }
