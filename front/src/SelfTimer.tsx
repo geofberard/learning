@@ -15,8 +15,7 @@ const SelfTimer: React.FC<PropsWithChildren<SelfTimerProps>> = ({children, trigg
         };
     }, []);
 
-
-    return isTriggered ? <>{children}</> : (
+    return !isTriggered ? <>{children}</> : (
         <div className="loader-container">
             <div className="loader-text">Patience, elle arrive ...</div>
             <CountdownTimer targetDate={triggerDate}/>
