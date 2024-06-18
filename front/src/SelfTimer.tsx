@@ -26,9 +26,10 @@ const SelfTimer: React.FC<PropsWithChildren<SelfTimerProps>> = ({children, trigg
 
     return isTriggered ? <>{children}</> : (
         <div className="loader-container">
-            <div className="loader-text">Patience, elle arrive ...</div>
+            <img className="loader-logo" src="./bbc.png" alt="appel"/>
+            <div className="loader-text">Wait ! Le 18 juin, le rendez-vous était à 20h15</div>
             <CountdownTimer targetDate={triggerDate}/>
-            <img className="loader-img" src="./tink.png" alt="tink"/>
+            <img className="loader-img" src="./appel.jpeg" alt="appel"/>
         </div>
     );
 }

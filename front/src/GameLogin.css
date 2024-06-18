@@ -17,13 +17,31 @@
 }
 
 .game-1-code {
-  color: white;
-  padding: 5px 20px;
   background-color: #3c3f41;
+  color: #ffffff;
+  border: none;
+  border-bottom: 2px solid transparent;
   border-radius: 8px;
-  border: 0;
-  text-align: center;
-  font-weight: bold;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, border-bottom-color 0.3s;
+}
+
+.game-1-code:focus {
+  border-bottom-color: #2196f3;
+  box-shadow: 0 3px 4px 0 rgba(33, 150, 243, 0.5);
+  outline: none;
+}
+
+.game-1-code.error {
+  border-bottom-color: #f44336;
+  box-shadow: 0 3px 4px 0 rgba(244, 67, 54, 0.5);
+}
+
+.error-message {
+  font-size: 1rem;
+  color: #f44336;
 }
 
 .game-1-help {
@@ -39,8 +57,4 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #20232a;
-}
-
-.game-1-help-container button {
-  margin-left: 70px;
 }
