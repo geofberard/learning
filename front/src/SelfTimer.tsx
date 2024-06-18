@@ -11,7 +11,6 @@ const SelfTimer: React.FC<PropsWithChildren<SelfTimerProps>> = ({children, trigg
     useEffect(() => {
         const interval = setInterval(() => {
             const difference = + new Date(triggerDate) - + new Date();
-            console.log("Evaluating", difference)
             if(!isTriggered && difference <= 0) {
                 setIsTriggered(true);
                 clearInterval(interval);
@@ -22,13 +21,12 @@ const SelfTimer: React.FC<PropsWithChildren<SelfTimerProps>> = ({children, trigg
         };
     }, [triggerDate, isTriggered]);
 
-    console.log("Refreshing", isTriggered)
-
     return isTriggered ? <>{children}</> : (
         <div className="loader-container">
-            <div className="loader-text">Patience, elle arrive ...</div>
+            <img className="loader-logo" src="./bbc.png" alt="appel"/>
+            <div className="loader-text">Wait ! Le 18 juin, le rendez-vous était à 20h15</div>
             <CountdownTimer targetDate={triggerDate}/>
-            <img className="loader-img" src="./tink.png" alt="tink"/>
+            <img className="loader-img" src="./appel.jpeg" alt="appel"/>
         </div>
     );
 }

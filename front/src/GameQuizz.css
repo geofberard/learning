@@ -1,0 +1,33 @@
+.game-2-clue {
+    max-width: 500px;
+}
+
+.game-2-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-2-input {
+    width: 300px;
+    background-color: #3c3f41;
+    color: #ffffff;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, border-bottom-color 0.3s;
+}
+
+.game-2-input:focus {
+    border-bottom-color: #2196f3;
+    box-shadow: 0 3px 4px 0 rgba(33, 150, 243, 0.5);
+    outline: none;
+}
+
+.game-2-input.error {
+    border-bottom-color: #f44336;
+    box-shadow: 0 3px 4px 0 rgba(244, 67, 54, 0.5);
+}

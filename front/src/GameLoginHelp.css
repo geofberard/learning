@@ -1,28 +1,9 @@
-.game-login-help {
-    text-align: center;
+.game-login-help img {
+    height: 300px;
 }
 
-.game-login-help .grid {
-    margin: auto;
-    padding-top: 50px;
-    padding-bottom: 20px;
+.game-login-help-details {
+    margin-bottom: 15px;
+    font-size: 1rem;
 }
 
-.game-login-help th {
-    text-align: right;
-    color: #999;
-    font-size: 12px;
-}
-
-.game-login-help th.done {
-    color: #66bb6a;
-}
-
-.game-login-help .colHeader {
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-}
-
-.game-login-help button {
-    margin-left: 70px;
-}
