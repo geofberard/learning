@@ -6,6 +6,7 @@ import com.gberard.learning.domain.port.output.BoxRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoxServiceImpl implements BoxService {
@@ -19,5 +20,10 @@ public class BoxServiceImpl implements BoxService {
     @Override
     public List<Box> findAll() {
         return repository.readAll();
+    }
+
+    @Override
+    public Optional<Box> findById(String id) {
+        return repository.read(id);
     }
 }

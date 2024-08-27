@@ -6,6 +6,7 @@ import com.gberard.learning.domain.port.output.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -20,4 +21,10 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> findAll() {
         return repository.readAll();
     }
+
+    @Override
+    public Optional<Category> findById(String id) {
+        return repository.read(id);
+    }
+
 }

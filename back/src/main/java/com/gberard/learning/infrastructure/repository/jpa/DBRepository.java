@@ -3,6 +3,7 @@ package com.gberard.learning.infrastructure.repository.jpa;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class DBRepository<D,E> {
@@ -19,6 +20,10 @@ public class DBRepository<D,E> {
 
     public List<D> readAll() {
         return repository.findAll().stream().map(toDomain).toList();
+    }
+
+    public Optional<D> read(String id) {
+        return repository.findById(id).map(toDomain);
     }
 
 }

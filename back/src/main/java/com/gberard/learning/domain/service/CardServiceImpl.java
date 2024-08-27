@@ -6,6 +6,7 @@ import com.gberard.learning.domain.port.output.CardRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -20,4 +21,10 @@ public class CardServiceImpl implements CardService {
     public List<Card> findAll() {
         return repository.readAll();
     }
+
+    @Override
+    public Optional<Card> findById(String id) {
+        return repository.read(id);
+    }
+
 }
