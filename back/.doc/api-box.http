@@ -2,4 +2,7 @@
 GET 127.0.0.1:8080/api/boxes
 
 ### Read
-GET 127.0.0.1:8080/api/boxes/b1
+GET 127.0.0.1:8080/api/boxes/b5
+
+### Delete
+DELETE 127.0.0.1:8080/api/boxes/b5

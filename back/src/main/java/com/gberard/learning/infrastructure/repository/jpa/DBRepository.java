@@ -26,4 +26,8 @@ public class DBRepository<D,E> {
         return repository.findById(id).map(toDomain);
     }
 
+    public void delete(D element) {
+        repository.delete(toEntity.apply(element));
+    }
+
 }

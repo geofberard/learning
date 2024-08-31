@@ -26,4 +26,11 @@ public class BoxServiceImpl implements BoxService {
     public Optional<Box> findById(String id) {
         return repository.read(id);
     }
+
+    @Override
+    public boolean delete(String id) {
+        Optional<Box> box = findById(id);
+        box.ifPresent(repository::delete);
+        return box.isPresent();
+    }
 }

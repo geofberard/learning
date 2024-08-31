@@ -11,4 +11,6 @@ public interface CardService {
 
     Optional<Card> findById(String id);
 
+    boolean delete(String id);
+
 }

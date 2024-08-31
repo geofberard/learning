@@ -11,4 +11,6 @@ public interface DataRepository<T extends Identified> {
 
     Optional<T> read(String id);
 
+    void delete(T element);
+
 }

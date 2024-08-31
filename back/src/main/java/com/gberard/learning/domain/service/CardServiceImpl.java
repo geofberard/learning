@@ -1,5 +1,6 @@
 package com.gberard.learning.domain.service;
 
+import com.gberard.learning.domain.model.Box;
 import com.gberard.learning.domain.model.Card;
 import com.gberard.learning.domain.port.input.CardService;
 import com.gberard.learning.domain.port.output.CardRepository;
@@ -25,6 +26,13 @@ public class CardServiceImpl implements CardService {
     @Override
     public Optional<Card> findById(String id) {
         return repository.read(id);
+    }
+
+    @Override
+    public boolean delete(String id) {
+        Optional<Card> box = findById(id);
+        box.ifPresent(repository::delete);
+        return box.isPresent();
     }
 
 }

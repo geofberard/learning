@@ -3,7 +3,8 @@ INSERT INTO boxes (id, name, interval_days)
 VALUES ('b1', 'Box de révision Quotidienne', 1),
        ('b2', 'Box de révision Hebdomadaire', 7),
        ('b3', 'Box de révision Mensuelle', 30),
-       ('b4', 'Box de révision Trimestrielle', 90);
+       ('b4', 'Box de révision Trimestrielle', 90),
+       ('b5', 'Box de révision Semestrielle', 180);
 
 -- Création des catégories
 INSERT INTO categories (id, name)
@@ -11,7 +12,8 @@ VALUES ('c1', 'Mathematics'),
        ('c2', 'Science'),
        ('c3', 'History'),
        ('c4', 'Geography'),
-       ('c5', 'Literature');
+       ('c5', 'Literature'),
+       ('c6', 'Music');
 
 -- Création des cartes
 INSERT INTO cards (id, question, answer, box_id, last_reviewed_date, next_review_date, category_id)

@@ -11,4 +11,6 @@ public interface CategoryService {
 
     Optional<Category> findById(String id);
 
+    boolean delete(String id);
+
 }

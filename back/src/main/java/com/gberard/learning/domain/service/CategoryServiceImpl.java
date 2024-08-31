@@ -1,5 +1,6 @@
 package com.gberard.learning.domain.service;
 
+import com.gberard.learning.domain.model.Card;
 import com.gberard.learning.domain.model.Category;
 import com.gberard.learning.domain.port.input.CategoryService;
 import com.gberard.learning.domain.port.output.CategoryRepository;
@@ -25,6 +26,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Optional<Category> findById(String id) {
         return repository.read(id);
+    }
+
+    @Override
+    public boolean delete(String id) {
+        Optional<Category> box = findById(id);
+        box.ifPresent(repository::delete);
+        return box.isPresent();
     }
 
 }

@@ -11,4 +11,6 @@ public interface BoxService {
 
     Optional<Box> findById(String id);
 
+    boolean delete(String id);
+
 }

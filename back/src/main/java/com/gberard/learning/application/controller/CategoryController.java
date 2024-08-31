@@ -2,11 +2,9 @@ package com.gberard.learning.application.controller;
 
 import com.gberard.learning.application.dto.CategoryDTO;
 import com.gberard.learning.domain.port.input.CategoryService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,6 +33,13 @@ public class CategoryController {
                 .map(CategoryDTO::toDTO)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCategory(@PathVariable String id) {
+        return categoryService.delete(id) ?
+                ResponseEntity.noContent().build() :
+                ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
 }
