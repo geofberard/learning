@@ -1,8 +1,26 @@
 ### Read all
 GET 127.0.0.1:8080/api/boxes
 
+### Create
+POST 127.0.0.1:8080/api/boxes
+Content-Type: application/json
+
+{
+ "name" : "Box de révision Semestrielle",
+ "intervalDays" : 280
+}
+
 ### Read
-GET 127.0.0.1:8080/api/boxes/b5
+GET 127.0.0.1:8080/api/boxes/box_f6c5b75a-945d-4cc8-9d0a-82959dcd6b91
+
+### Update
+PUT 127.0.0.1:8080/api/boxes/b5
+Content-Type: application/json
+
+{
+ "name" : "Box de révision Semestrielle",
+ "intervalDays" : 180
+}
 
 ### Delete
 DELETE 127.0.0.1:8080/api/boxes/b5

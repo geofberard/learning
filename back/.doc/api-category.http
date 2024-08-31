@@ -1,8 +1,24 @@
 ### Read all
 GET 127.0.0.1:8080/api/categories
 
+### Create
+POST 127.0.0.1:8080/api/categories
+Content-Type: application/json
+
+{
+  "name" : "Music"
+}
+
 ### Read
 GET 127.0.0.1:8080/api/categories/c6
+
+### Update
+PUT 127.0.0.1:8080/api/categories/c6
+Content-Type: application/json
+
+{
+  "name" : "Painting"
+}
 
 ### Delete
 DELETE 127.0.0.1:8080/api/categories/c6

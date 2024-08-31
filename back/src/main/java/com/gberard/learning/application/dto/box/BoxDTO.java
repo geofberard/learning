@@ -1,4 +1,4 @@
-package com.gberard.learning.application.dto;
+package com.gberard.learning.application.dto.box;
 
 import com.gberard.learning.domain.model.Box;
 

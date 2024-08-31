@@ -11,6 +11,10 @@ public interface CategoryService {
 
     Optional<Category> findById(String id);
 
+    Category create(String name);
+
+    Category update(String id, String name);
+
     boolean delete(String id);
 
 }

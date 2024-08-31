@@ -3,6 +3,7 @@ package com.gberard.learning.domain.service;
 import com.gberard.learning.domain.model.Box;
 import com.gberard.learning.domain.port.input.BoxService;
 import com.gberard.learning.domain.port.output.BoxRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +26,17 @@ public class BoxServiceImpl implements BoxService {
     @Override
     public Optional<Box> findById(String id) {
         return repository.read(id);
+    }
+
+    @Override
+    public Box create(String name, int interval) {
+        return repository.create(new Box(null, name, interval));
+    }
+
+    @Override
+    public Box update(String id, String name, int interval) {
+        Box box = repository.readSafe(id);
+        return repository.create(new Box(box.id(), name, interval));
     }
 
     @Override

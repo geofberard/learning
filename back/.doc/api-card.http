@@ -1,8 +1,60 @@
 ### Read all
 GET 127.0.0.1:8080/api/cards
 
+### Create
+POST 127.0.0.1:8080/api/cards
+Content-Type: application/json
+
+{
+  "question": "What is the speed of light ?",
+  "answer": "3.1OE8 m/s",
+  "boxId": "b1",
+  "lastReview": "2024-08-01",
+  "nextReview": "2024-11-05",
+  "categoryId": "c2"
+}
+
 ### Read
-GET 127.0.0.1:8080/api/cards/_1
+GET 127.0.0.1:8080/api/cards/_20
+
+### Update
+PUT 127.0.0.1:8080/api/cards/_20
+Content-Type: application/json
+
+{
+  "question" : "What is the speed of sound ?",
+  "answer" : "300 m/s",
+  "boxId" : "b1",
+  "lastReview" : "2024-08-01",
+  "nextReview" : "2024-11-05",
+  "categoryId" : "c2"
+}
 
 ### Delete
-DELETE 127.0.0.1:8080/api/cards/_1
+DELETE 127.0.0.1:8080/api/cards/_20
+
+### Error : Create - Category not existing
+POST 127.0.0.1:8080/api/cards
+Content-Type: application/json
+
+{
+  "question" : "What is the speed of light ?",
+  "answer" : "3.1OE8 m/s",
+  "boxId" : "b1",
+  "lastReview" : "2024-08-01",
+  "nextReview" : "2024-11-05",
+  "categoryId" : "unknown"
+}
+
+### Error : Create - Box not existing
+POST 127.0.0.1:8080/api/cards
+Content-Type: application/json
+
+{
+  "question" : "What is the speed of light ?",
+  "answer" : "3.1OE8 m/s",
+  "boxId" : "unknown",
+  "lastReview" : "2024-08-01",
+  "nextReview" : "2024-11-05",
+  "categoryId" : "c2"
+}

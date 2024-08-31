@@ -11,6 +11,12 @@ public interface DataRepository<T extends Identified> {
 
     Optional<T> read(String id);
 
+    T readSafe(String id);
+
+    T create(T entity);
+
+    T update(T entity);
+
     void delete(T element);
 
 }

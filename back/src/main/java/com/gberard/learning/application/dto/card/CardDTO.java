@@ -1,5 +1,7 @@
-package com.gberard.learning.application.dto;
+package com.gberard.learning.application.dto.card;
 
+import com.gberard.learning.application.dto.box.BoxDTO;
+import com.gberard.learning.application.dto.category.CategoryDTO;
 import com.gberard.learning.domain.model.Card;
 
 import java.time.LocalDate;
@@ -9,8 +11,8 @@ public record CardDTO(
         String question,
         String answer,
         BoxDTO box,
-        LocalDate lastReviewedDate,
-        LocalDate nextReviewDate,
+        LocalDate lastReview,
+        LocalDate nextReview,
         CategoryDTO category
 ) {
     public static CardDTO toDTO(Card card) {
