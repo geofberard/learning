@@ -1,4 +1,4 @@
-package com.gberard.learning;
+package com.gberard.learning.application;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

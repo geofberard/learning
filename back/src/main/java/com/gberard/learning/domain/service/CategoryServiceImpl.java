@@ -34,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category update(String id, String name) {
-        Category category = repository.readSafe(id);
+        Category category = repository.readOrThrow(id);
         return repository.update(new Category(category.id(), name));
     }
 

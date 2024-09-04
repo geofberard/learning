@@ -1,5 +1,7 @@
 package com.gberard.learning.infrastructure.repository.jpa;
 
+import com.gberard.learning.domain.model.Identified;
+import com.gberard.learning.domain.port.output.DataRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -7,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class DBRepository<D,E> {
+public abstract class DBRepository<D extends Identified,E> implements DataRepository<D> {
 
     private final JpaRepository<E,String> repository;
     private final Function<D,E> toEntity;
@@ -19,15 +21,18 @@ public class DBRepository<D,E> {
         this.toDomain = toDomain;
     }
 
+    @Override
     public List<D> readAll() {
         return repository.findAll().stream().map(toDomain).toList();
     }
 
+    @Override
     public Optional<D> read(String id) {
         return repository.findById(id).map(toDomain);
     }
 
-    public D readSafe(String id) {
+    @Override
+    public D readOrThrow(String id) {
         return repository.findById(id)
                 .map(toDomain)
                 .orElseThrow(() -> new EntityNotFoundException(getLogName() + " : Unknown id [" + id + "]"));
@@ -37,14 +42,17 @@ public class DBRepository<D,E> {
         return getClass().getSimpleName().replace("DB", "");
     }
 
+    @Override
     public D create(D entity) {
         return toDomain.apply(repository.save(toEntity.apply(entity)));
     }
 
+    @Override
     public D update(D entity) {
         return toDomain.apply(repository.save(toEntity.apply(entity)));
     }
 
+    @Override
     public void delete(D element) {
         repository.delete(toEntity.apply(element));
     }

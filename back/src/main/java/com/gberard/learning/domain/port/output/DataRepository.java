@@ -11,7 +11,7 @@ public interface DataRepository<T extends Identified> {
 
     Optional<T> read(String id);
 
-    T readSafe(String id);
+    T readOrThrow(String id);
 
     T create(T entity);
 

@@ -38,17 +38,17 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Card create(String question, String answer, String boxId, LocalDate lastReviewedDate, LocalDate nextReviewDate, String categoryId) {
-        Box box = boxRepository.readSafe(boxId);
-        Category category = categoryRepository.readSafe(categoryId);
+        Box box = boxRepository.readOrThrow(boxId);
+        Category category = categoryRepository.readOrThrow(categoryId);
 
         return cardRepository.create(new Card(null, question, answer, box, lastReviewedDate, nextReviewDate, category));
     }
 
     @Override
     public Card update(String id, String question, String answer, String boxId, LocalDate lastReviewedDate, LocalDate nextReviewDate, String categoryId) {
-        Card card = cardRepository.readSafe(id);
-        Box box = boxRepository.readSafe(boxId);
-        Category category = categoryRepository.readSafe(categoryId);
+        Card card = cardRepository.readOrThrow(id);
+        Box box = boxRepository.readOrThrow(boxId);
+        Category category = categoryRepository.readOrThrow(categoryId);
 
         return cardRepository.update(new Card(card.id(), question, answer, box, lastReviewedDate, nextReviewDate, category));
     }
