@@ -30,6 +30,12 @@ Content-Type: application/json
   "categoryId" : "c2"
 }
 
+### Promote
+POST 127.0.0.1:8080/api/cards/_20/promote
+
+### Demote
+POST 127.0.0.1:8080/api/cards/_20/demote
+
 ### Delete
 DELETE 127.0.0.1:8080/api/cards/_20
 

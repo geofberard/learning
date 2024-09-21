@@ -72,4 +72,16 @@ public class CardController {
                 ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 
+    @PostMapping("/{id}/promote")
+    public ResponseEntity<Void> promoteCard(@PathVariable String id) {
+        cardService.promote(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/demote")
+    public ResponseEntity<Void>demoteCard(@PathVariable String id) {
+        cardService.demote(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

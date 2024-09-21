@@ -2,6 +2,7 @@ CREATE TABLE boxes
 (
     id            VARCHAR(255) PRIMARY KEY,
     name          VARCHAR(255) NOT NULL,
+    position      INT          NOT NULL,
     interval_days INT          NOT NULL
 );
 

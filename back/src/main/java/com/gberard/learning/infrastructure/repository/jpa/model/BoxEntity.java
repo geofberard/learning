@@ -14,6 +14,8 @@ public class BoxEntity {
 
     private String name;
 
+    private int position;
+
     private int intervalDays;
 
     @PrePersist
@@ -24,13 +26,14 @@ public class BoxEntity {
     }
 
     public static Box toDomain(BoxEntity boxEntity) {
-        return new Box(boxEntity.id, boxEntity.name, boxEntity.intervalDays);
+        return new Box(boxEntity.id, boxEntity.name, boxEntity.position, boxEntity.intervalDays);
     }
 
     public static BoxEntity toEntity(Box box) {
         BoxEntity boxEntity = new BoxEntity();
         boxEntity.id= box.id();
         boxEntity.name= box.name();
+        boxEntity.position= box.position();
         boxEntity.intervalDays= box.intervalDays();
         return boxEntity;
     }

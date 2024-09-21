@@ -28,14 +28,19 @@ public class BoxServiceImpl implements BoxService {
     }
 
     @Override
-    public Box create(String name, int interval) {
-        return repository.create(new Box(null, name, interval));
+    public Box findByIdOrThrow(String id) {
+        return repository.readOrThrow(id);
     }
 
     @Override
-    public Box update(String id, String name, int interval) {
+    public Box create(String name, int position,int interval) {
+        return repository.create(new Box(null, name, position, interval));
+    }
+
+    @Override
+    public Box update(String id, String name, int position, int interval) {
         Box box = repository.readOrThrow(id);
-        return repository.create(new Box(box.id(), name, interval));
+        return repository.create(new Box(box.id(), name, position, interval));
     }
 
     @Override
@@ -43,5 +48,15 @@ public class BoxServiceImpl implements BoxService {
         Optional<Box> box = findById(id);
         box.ifPresent(repository::delete);
         return box.isPresent();
+    }
+
+    @Override
+    public Optional<Box> findFirst() {
+        return repository.findByPosition(1);
+    }
+
+    @Override
+    public Optional<Box> findNext(Box box) {
+        return repository.findByPosition(box.position() + 1);
     }
 }

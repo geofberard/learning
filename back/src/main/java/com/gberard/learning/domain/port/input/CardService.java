@@ -2,7 +2,6 @@ package com.gberard.learning.domain.port.input;
 
 import com.gberard.learning.domain.model.Box;
 import com.gberard.learning.domain.model.Card;
-import com.gberard.learning.domain.model.Category;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -34,5 +33,9 @@ public interface CardService {
     );
 
     boolean delete(String id);
+
+    boolean promote(String id);
+
+    boolean demote(String id);
 
 }

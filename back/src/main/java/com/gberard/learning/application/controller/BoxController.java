@@ -34,7 +34,7 @@ public class BoxController {
 
     @PostMapping
     public ResponseEntity<BoxDTO> createBox(@RequestBody CreateBoxDTO createBoxDTO) {
-        Box newBox = boxService.create(createBoxDTO.name(), createBoxDTO.intervalDays());
+        Box newBox = boxService.create(createBoxDTO.name(), createBoxDTO.position(), createBoxDTO.intervalDays());
         return ResponseEntity.ok(BoxDTO.toDTO(newBox));
     }
 
@@ -48,7 +48,7 @@ public class BoxController {
 
     @PutMapping("/{id}")
     public ResponseEntity<BoxDTO> updateBox(@PathVariable String id, @RequestBody UpdateBoxDTO updateBoxDTO) {
-        Box updatedBox = boxService.update(id, updateBoxDTO.name(), updateBoxDTO.intervalDays());
+        Box updatedBox = boxService.update(id, updateBoxDTO.name(), updateBoxDTO.position(), updateBoxDTO.intervalDays());
         return ResponseEntity.ok(BoxDTO.toDTO(updatedBox));
     }
 

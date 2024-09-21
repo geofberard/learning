@@ -1,10 +1,10 @@
 -- Création des boîtes
-INSERT INTO boxes (id, name, interval_days)
-VALUES ('b1', 'Box de révision Quotidienne', 1),
-       ('b2', 'Box de révision Hebdomadaire', 7),
-       ('b3', 'Box de révision Mensuelle', 30),
-       ('b4', 'Box de révision Trimestrielle', 90),
-       ('b5', 'Box de révision Semestrielle', 180);
+INSERT INTO boxes (id, name, position, interval_days)
+VALUES ('b1', 'Box de révision Quotidienne', 1, 1),
+       ('b2', 'Box de révision Hebdomadaire', 2, 7),
+       ('b3', 'Box de révision Mensuelle', 3, 30),
+       ('b4', 'Box de révision Trimestrielle', 4, 90),
+       ('b5', 'Box de révision Semestrielle', 5, 180);
 
 -- Création des catégories
 INSERT INTO categories (id, name)

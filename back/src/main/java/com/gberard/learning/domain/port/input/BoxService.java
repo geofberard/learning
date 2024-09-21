@@ -11,10 +11,16 @@ public interface BoxService {
 
     Optional<Box> findById(String id);
 
-    Box create(String name, int interval);
+    Box findByIdOrThrow(String id);
 
-    Box update(String id, String name, int interval);
+    Box create(String name, int position, int interval);
+
+    Box update(String id, String name, int position, int interval);
 
     boolean delete(String id);
+
+    Optional<Box> findFirst();
+
+    Optional<Box> findNext(Box box);
 
 }

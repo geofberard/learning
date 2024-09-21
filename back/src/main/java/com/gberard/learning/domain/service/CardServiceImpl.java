@@ -2,9 +2,10 @@ package com.gberard.learning.domain.service;
 
 import com.gberard.learning.domain.model.Box;
 import com.gberard.learning.domain.model.Card;
+import com.gberard.learning.domain.model.CardBuilder;
 import com.gberard.learning.domain.model.Category;
+import com.gberard.learning.domain.port.input.BoxService;
 import com.gberard.learning.domain.port.input.CardService;
-import com.gberard.learning.domain.port.output.BoxRepository;
 import com.gberard.learning.domain.port.output.CardRepository;
 import com.gberard.learning.domain.port.output.CategoryRepository;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class CardServiceImpl implements CardService {
 
     private final CardRepository cardRepository;
     private final CategoryRepository categoryRepository;
-    private final BoxRepository boxRepository;
+    private final BoxService boxService;
 
-    public CardServiceImpl(CardRepository cardRepository, CategoryRepository categoryRepository, BoxRepository boxRepository) {
+    public CardServiceImpl(CardRepository cardRepository, CategoryRepository categoryRepository, BoxService boxService) {
         this.cardRepository = cardRepository;
         this.categoryRepository = categoryRepository;
-        this.boxRepository = boxRepository;
+        this.boxService = boxService;
     }
 
     @Override
@@ -38,7 +39,7 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Card create(String question, String answer, String boxId, LocalDate lastReviewedDate, LocalDate nextReviewDate, String categoryId) {
-        Box box = boxRepository.readOrThrow(boxId);
+        Box box = boxService.findByIdOrThrow(boxId);
         Category category = categoryRepository.readOrThrow(categoryId);
 
         return cardRepository.create(new Card(null, question, answer, box, lastReviewedDate, nextReviewDate, category));
@@ -47,7 +48,7 @@ public class CardServiceImpl implements CardService {
     @Override
     public Card update(String id, String question, String answer, String boxId, LocalDate lastReviewedDate, LocalDate nextReviewDate, String categoryId) {
         Card card = cardRepository.readOrThrow(id);
-        Box box = boxRepository.readOrThrow(boxId);
+        Box box = boxService.findByIdOrThrow(boxId);
         Category category = categoryRepository.readOrThrow(categoryId);
 
         return cardRepository.update(new Card(card.id(), question, answer, box, lastReviewedDate, nextReviewDate, category));
@@ -55,9 +56,34 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public boolean delete(String id) {
-        Optional<Card> box = findById(id);
-        box.ifPresent(cardRepository::delete);
-        return box.isPresent();
+        Optional<Card> card = findById(id);
+        card.ifPresent(cardRepository::delete);
+        return card.isPresent();
     }
 
+    @Override
+    public boolean promote(String id) {
+        Card card = cardRepository.readOrThrow(id);
+        Optional<Box> next = boxService.findNext(card.box());
+        return next.map(box -> CardBuilder.from(card)
+                        .lastReviewedDate(LocalDate.now())
+                        .box(box)
+                        .nextReviewDate(LocalDate.now().plusDays(box.intervalDays()))
+                        .build())
+                .map(cardRepository::update)
+                .isPresent();
+    }
+
+    @Override
+    public boolean demote(String id) {
+        Card card = cardRepository.readOrThrow(id);
+        Optional<Box> next = boxService.findFirst();
+        return next.map(box -> CardBuilder.from(card)
+                        .lastReviewedDate(LocalDate.now())
+                        .box(box)
+                        .nextReviewDate(LocalDate.now().plusDays(box.intervalDays()))
+                        .build())
+                .map(cardRepository::update)
+                .isPresent();
+    }
 }

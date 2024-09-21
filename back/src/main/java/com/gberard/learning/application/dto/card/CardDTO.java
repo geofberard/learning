@@ -22,7 +22,7 @@ public record CardDTO(
                 card.answer(),
                 BoxDTO.toDTO(card.box()),
                 card.lastReviewedDate(),
-                card.lastReviewedDate(),
+                card.nextReviewDate(),
                 CategoryDTO.toDTO(card.category())
         );
     }
