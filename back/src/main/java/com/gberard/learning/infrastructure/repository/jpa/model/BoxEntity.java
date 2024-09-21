@@ -18,11 +18,37 @@ public class BoxEntity {
 
     private int intervalDays;
 
+    public BoxEntity() {
+    }
+
+    public BoxEntity(String id, String name, int position, int intervalDays) {
+        this.intervalDays = intervalDays;
+        this.position = position;
+        this.name = name;
+        this.id = id;
+    }
+
     @PrePersist
     public void generateUUID() {
         if (this.id == null) {
             this.id = "box_" + UUID.randomUUID();
         }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public int getIntervalDays() {
+        return intervalDays;
     }
 
     public static Box toDomain(BoxEntity boxEntity) {

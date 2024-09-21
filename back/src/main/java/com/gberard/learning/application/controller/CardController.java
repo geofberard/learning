@@ -22,7 +22,7 @@ public class CardController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CardDTO>> findCardes() {
+    public ResponseEntity<List<CardDTO>> findCards() {
         List<CardDTO> card = cardService.findAll().stream()
                 .map(CardDTO::toDTO)
                 .toList();

@@ -17,11 +17,27 @@ public class CategoryEntity {
 
     private String name;
 
+    public CategoryEntity() {
+    }
+
+    public CategoryEntity(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @PrePersist
     public void generateUUID() {
         if (this.id == null) {
             this.id = "category_" + UUID.randomUUID();
         }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public static Category toDomain(CategoryEntity categoryEntity) {
