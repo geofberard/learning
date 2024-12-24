@@ -38,7 +38,7 @@ body {
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 10px 30px;
   margin: 20px auto;
   max-width: 600px;
   text-align: left;
@@ -49,4 +49,8 @@ body {
   pointer-events: none;
   user-select: none;
   opacity: 0.5;
+}
+
+.bold {
+  font-weight: bold;
 }

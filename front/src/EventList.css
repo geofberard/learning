@@ -12,6 +12,10 @@
     border-bottom: 1px solid #ddd;
 }
 
+.EventItem:last-child {
+    border-bottom: none;
+}
+
 .EventTime {
     font-size: 1.2rem;
     font-weight: bold;
