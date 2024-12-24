@@ -34,7 +34,7 @@ const App: React.FC = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <h1 className="App-title">Une Journée VIP à Paris</h1>
+                <h1 className="App-title">Journée VIP à Paris</h1>
             </header>
             <main className="App-main">
                 <div className="Card">
