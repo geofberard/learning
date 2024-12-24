@@ -1,0 +1,45 @@
+/* src/EventList.css */
+.EventList {
+    list-style: none;
+    padding: 0;
+}
+
+.EventItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.EventTime {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.EventDescription {
+    font-size: 1rem;
+    flex-grow: 1;
+    margin-left: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.ToBeDefined {
+    color: #aaa;
+    text-decoration: italic;
+    opacity: 0.6;
+}
+
+.RevealButton {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.RevealButton:hover {
+    background-color: #555;
+}
